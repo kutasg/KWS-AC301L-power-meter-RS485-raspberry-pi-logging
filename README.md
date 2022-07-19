@@ -16,8 +16,11 @@ It comes with a very basic software that can be downloaded from chinese file sha
 site.
 
 It only runs on windows
+
 Showed graphs disappear when program closed.
+
 No zoom functions.
+
 Logging only a daily kWh value into an sqlite db.
 
 
