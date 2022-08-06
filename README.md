@@ -1,3 +1,5 @@
+
+
 # KWS-AC301L-power-meter-RS485-raspberry-pi-logging
 This is a python script to log data from KWS-AC301L power meter
 
@@ -5,6 +7,7 @@ Logging data from KWS-AC301L power meter
 from China stores.
 
 This equipment is sutable for measuring household electricity consumption.
+
 It measures AC 1 phase Voltage 50-300V, Current up to 100A with coil.
 
 Values displayed:
@@ -12,6 +15,7 @@ V, A, (k)W, power factor, kWh, elapsed time, temperature, Hz
 
 The *L model has RS485 interface, to read actual data from the box.
 
+---
 It comes with a very basic software that can be downloaded from chinese file sharing
 site.
 
@@ -23,6 +27,7 @@ No zoom functions.
 
 Logging only a daily kWh value into an sqlite db.
 
+---
 
 I decided to change it to a more affordable raspberry PI environment.
 
@@ -39,58 +44,72 @@ Logging parameters inside the script.
 
 Feel free to use and develop this script as you need!
 
-Installation:
+---
+
+# Installation
 
 Tested on Raspberry PI 3B
 with Raspbian 11	5.15.32
 
-#update your repo
-sudo apt-get update
-#install pip3
-sudo apt-get install python3-pip
-#install pyserial
-sudo pip3 install pyserial
-#clone this repo
-git clone https://github.com/kutasg/KWS-AC301L-power-meter-RS485-raspberry-pi-logging
+- update your repo
 
-#Connect your CH340/CH341 USB converter
-#It is working plug and play.
+  sudo apt-get update
+- install pip3
 
-#check if module loaded, device exists:
-lsmod |grep ch3
-ls -l /dev/ttyUSB0
+  sudo apt-get install python3-pip
+- install pyserial
+  
+  sudo pip3 install pyserial
+- clone this repo
 
-#Modify parameters in the script if necessary
-serialdev="/dev/ttyUSB0"
+  git clone https://github.com/kutasg/KWS-AC301L-power-meter-RS485-raspberry-pi-logging
 
-loginterval=5   #sec
+- Connect your CH340/CH341 USB converter
+  
+  It is working plug and play.
 
-logfilepath="/home/pi/"
-logfilename="power_meter_" #prefix
-logfileextension=".log"
+- check if module loaded, device exists:
+  
+  lsmod |grep ch3
+  ls -l /dev/ttyUSB0
 
-logmode="csv"   #csv|keyvalue
-#logmode="keyvalue"
-csv_delimiter=","
-kv_delimiter=" "
-kv_separator="="
-newline="\n"
+- Modify parameters in the script if necessary
+  ```
+  serialdev="/dev/ttyUSB0"
+  loginterval=5   #sec
+  logfilepath="/home/pi/"
+  logfilename="power_meter_" #prefix
+  logfileextension=".log"
+  logmode="csv"   #csv|keyvalue
+  csv_delimiter=","
+  kv_delimiter=" "
+  kv_separator="="
+  newline="\n"
+  ```
+- test run
 
-#test run
-python3 KWS-AC301L_logcollect.py
+  python3 KWS-AC301L_logcollect.py
 
-#Look for the log file e.g.
-cat power_meter_2022-07-16.log
+-  Look for the log file e.g.
+  
+  cat power_meter_2022-07-16.log
 
-#sample output
+
+# sample output
+
+```
 Time,Volt,Amp,Watt,minutes,kWh,Power_factor,unknown,Hz,degC
 2022-07-16 21:52:18,235.7,2.994,652.1,9081.0,50.883,0.88,30656.0,50.0,29.0
 2022-07-16 21:52:24,235.9,2.958,632.7,9082.0,50.884,0.88,30656.0,50.0,29.0
+```
 
 #if you want to run it in the background all day long,
-#edit meter_launcher.sh program path
-#add this line to crontab (replace path if necessary)
-* * * * * /home/pi/meter_launcher.sh
 
+#edit meter_launcher.sh program path
+
+#add this line to crontab (replace path if necessary)
+```
+* * * * * /home/pi/meter_launcher.sh
+```
 #It launches KWS-AC301L_logcollect.py script every minute if it's not running.
 
