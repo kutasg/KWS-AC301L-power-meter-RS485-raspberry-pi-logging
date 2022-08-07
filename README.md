@@ -14,7 +14,8 @@ It measures AC 1 phase Voltage 50-300V, Current up to 100A with coil.
 Values displayed:
 V, A, (k)W, power factor, kWh, elapsed time, temperature, Hz
 
-The *L model has RS485 interface, to read actual data from the box.
+The \*L model has RS485 interface, to read actual data from the box.
+
 ![Alt text](pictures/KWS-AC301-2.png?raw=true "Title")
 
 ---
