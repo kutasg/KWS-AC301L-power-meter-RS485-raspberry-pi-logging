@@ -1,3 +1,4 @@
+
 # KWS-AC301L-power-meter-RS485-raspberry-pi-logging
 This is a python script to log data from KWS-AC301L power meter
 
@@ -5,13 +6,16 @@ Logging data from KWS-AC301L power meter
 from China stores.
 
 This equipment is sutable for measuring household electricity consumption.
+![Alt text](pictures/KWS-AC301-1.png?raw=true "Title")
 
 It measures AC 1 phase Voltage 50-300V, Current up to 100A with coil.
+![Alt text](pictures/KWS-AC301-3.png?raw=true "Title")
 
 Values displayed:
 V, A, (k)W, power factor, kWh, elapsed time, temperature, Hz
 
 The *L model has RS485 interface, to read actual data from the box.
+![Alt text](pictures/KWS-AC301-2.png?raw=true "Title")
 
 ---
 It comes with a very basic software that can be downloaded from chinese file sharing
@@ -31,6 +35,8 @@ I decided to change it to a more affordable raspberry PI environment.
 
 I used CH340/CH341type USB-RS485 adapter. It worked with windows 7,10 and
 also has driver for raspbian.
+![Alt text](pictures/CH340.jpg?raw=true "Title")
+
 
 The serial communication must have been analized.
 I used free-serial-analyzer to dump communication.
