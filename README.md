@@ -57,16 +57,24 @@ with Raspbian 11	5.15.32
 
 - update your repo
 
+```
   sudo apt-get update
+```
 - install pip3
 
+```
   sudo apt-get install python3-pip
+```
 - install pyserial
   
+```
   sudo pip3 install pyserial
+```
 - clone this repo
 
+```
   git clone https://github.com/kutasg/KWS-AC301L-power-meter-RS485-raspberry-pi-logging
+```
 
 - Connect your CH340/CH341 USB converter
   
@@ -74,8 +82,10 @@ with Raspbian 11	5.15.32
 
 - check if module loaded, device exists:
   
+```
   lsmod |grep ch3
   ls -l /dev/ttyUSB0
+```
 
 - Modify parameters in the script if necessary
   ```
@@ -92,11 +102,15 @@ with Raspbian 11	5.15.32
   ```
 - test run
 
+```
   python3 KWS-AC301L_logcollect.py
+```
 
 -  Look for the log file e.g.
   
+```
   cat power_meter_2022-07-16.log
+```
 
 
 # sample output
