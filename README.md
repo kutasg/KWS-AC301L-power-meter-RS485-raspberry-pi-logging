@@ -1,6 +1,8 @@
 
 # KWS-AC301L-power-meter-RS485-raspberry-pi-logging
-This is a python script to log data from KWS-AC301L power meter
+This is a python script to log data from KWS-AC301L power meter.
+
+It logs into local file, csv or key-value format.
 
 Logging data from KWS-AC301L power meter
 from China stores.
