@@ -1,17 +1,24 @@
+
 # KWS-AC301L-power-meter-RS485-raspberry-pi-logging
-This is a python script to log data from KWS-AC301L power meter
+This is a python script to log data from KWS-AC301L power meter.
+
+It logs into local file, csv or key-value format.
 
 Logging data from KWS-AC301L power meter
 from China stores.
 
 This equipment is sutable for measuring household electricity consumption.
+![Alt text](pictures/KWS-AC301-1.png?raw=true "Title")
 
 It measures AC 1 phase Voltage 50-300V, Current up to 100A with coil.
+![Alt text](pictures/KWS-AC301-3.png?raw=true "Title")
 
 Values displayed:
 V, A, (k)W, power factor, kWh, elapsed time, temperature, Hz
 
-The *L model has RS485 interface, to read actual data from the box.
+The \*L model has RS485 interface, to read actual data from the box.
+
+![Alt text](pictures/KWS-AC301-2.png?raw=true "Title")
 
 ---
 It comes with a very basic software that can be downloaded from chinese file sharing
@@ -31,6 +38,8 @@ I decided to change it to a more affordable raspberry PI environment.
 
 I used CH340/CH341type USB-RS485 adapter. It worked with windows 7,10 and
 also has driver for raspbian.
+![Alt text](pictures/CH340.jpg?raw=true "Title")
+
 
 The serial communication must have been analized.
 I used free-serial-analyzer to dump communication.
@@ -51,16 +60,24 @@ with Raspbian 11	5.15.32
 
 - update your repo
 
+```
   sudo apt-get update
+```
 - install pip3
 
+```
   sudo apt-get install python3-pip
+```
 - install pyserial
   
+```
   sudo pip3 install pyserial
+```
 - clone this repo
 
+```
   git clone https://github.com/kutasg/KWS-AC301L-power-meter-RS485-raspberry-pi-logging
+```
 
 - Connect your CH340/CH341 USB converter
   
@@ -68,8 +85,10 @@ with Raspbian 11	5.15.32
 
 - check if module loaded, device exists:
   
+```
   lsmod |grep ch3
   ls -l /dev/ttyUSB0
+```
 
 - Modify parameters in the script if necessary
   ```
@@ -86,11 +105,15 @@ with Raspbian 11	5.15.32
   ```
 - test run
 
+```
   python3 KWS-AC301L_logcollect.py
+```
 
 -  Look for the log file e.g.
   
+```
   cat power_meter_2022-07-16.log
+```
 
 
 # sample output
