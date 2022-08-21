@@ -12,6 +12,8 @@ logfilepath="/home/pi/"
 logfilename="power_meter_"
 logfileextension=".log"
 
+flushinterval=21    #logfile write buffer flush after n rows
+
 logmode="csv"   #csv|keyvalue
 #logmode="keyvalue"
 csv_delimiter=","
@@ -163,6 +165,7 @@ ser = serial.Serial(serialdev, 9600)
 #open log file
 logfilefullname = getlogfilename()
 logfile = open(logfilefullname, "a" )
+flushcounter=flushinterval
 writeheader(logfile)
 
 while True:
@@ -184,7 +187,10 @@ while True:
     row=logrow(value)
     if row != None:
         logfile.write(logrow(value))
-        logfile.flush()
+        flushcounter=flushcounter-1
+        if flushcounter<1 :
+            logfile.flush()
+            flushcounter=flushinterval
 
     time.sleep(loginterval)
 
